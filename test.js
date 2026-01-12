@@ -15,7 +15,6 @@ const container = layoutBuilder.init(ThemeStyle.WAR);
 layoutBuilder.renderHeaderInputs()
 
 
-export { LayoutBuilder, ThemeStyle, Resource, Route, Endpoint, Query, RouteBadge, ObjektraField, ValueType,  }
 
 //POST
 
