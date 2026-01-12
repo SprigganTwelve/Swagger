@@ -1,0 +1,409 @@
+/* =========================================================
+MACHINE CORE — VARIABLES
+========================================================= */
+:root {
+    --bg-main: #05070a;
+    --bg-panel: #0a0f14;
+    --bg-panel-soft: #0e141b;
+
+    --cyan: #00e5ff;
+    --cyan-soft: #6ff6ff;
+    --blue: #1f6feb;
+
+    --border: #1b2a35;
+    --border-glow: rgba(0,229,255,.5);
+
+    --text-main: #dce7f0;
+    --text-muted: #6c8293;
+
+    --radius: 10px;
+    --radius-sm: 6px;
+    --radius-xs: 4px;
+
+    --glow: 0 0 18px rgba(0,229,255,.35);
+}
+
+/* =========================================================
+RESET
+========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+}
+
+/* =========================================================
+BACKGROUND
+========================================================= */
+body {
+    min-height: 100vh;
+    background:
+        linear-gradient(180deg, #05070a, #020406),
+        repeating-linear-gradient(
+            to right,
+            rgba(0,229,255,.03) 0px,
+            rgba(0,229,255,.03) 1px,
+            transparent 1px,
+            transparent 40px
+        );
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+/* =========================================================
+DISGUISE CLASSES
+========================================================= */
+.display-none {
+    display: none !important;
+}
+
+.visibility-hidden {
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* =========================================================
+HEADER
+========================================================= */
+header {
+    padding: 20px 28px;
+    background: linear-gradient(180deg, #0a1016, #05080c);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--glow);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+header h1 {
+    color: var(--cyan);
+    font-size: 20px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px var(--cyan);
+    margin-right: auto;
+}
+
+header input {
+    background: #020406;
+    border: 1px solid var(--border);
+    color: var(--cyan);
+    padding: 8px 12px;
+    border-radius: var(--radius-xs);
+}
+
+header input::placeholder {
+    color: var(--text-muted);
+}
+
+header input:focus {
+    outline: none;
+    border-color: var(--cyan);
+    box-shadow: 0 0 10px var(--cyan);
+}
+
+/* =========================================================
+CONTAINER
+========================================================= */
+#container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px;
+}
+
+/* =========================================================
+RESOURCE
+========================================================= */
+.resource {
+    margin-bottom: 50px;
+}
+
+.resource-title {
+    font-size: 17px;
+    color: var(--cyan);
+    padding-left: 14px;
+    border-left: 4px solid var(--cyan);
+    text-shadow: 0 0 8px var(--cyan);
+    margin-bottom: 20px;
+}
+
+/* =========================================================
+ROUTE
+========================================================= */
+.route {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 22px;
+    border-radius: var(--radius);
+    background: linear-gradient(145deg, #0a0f14, #05080c);
+    border: 1px solid var(--border);
+    margin-bottom: 16px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: inset 0 0 18px rgba(0,229,255,.08), var(--glow);
+}
+
+.route::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--cyan);
+    opacity: .6;
+}
+
+.route:hover {
+    box-shadow: 0 0 25px var(--cyan);
+}
+
+/* =========================================================
+METHOD
+========================================================= */
+.method {
+    font-size: 11px;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: var(--radius-xs);
+    background: black;
+    color: var(--cyan);
+    border: 1px solid var(--cyan);
+    box-shadow: 0 0 8px var(--cyan);
+}
+
+.DELETE {
+    color: #ff4d4d;
+    border-color: #ff4d4d;
+    box-shadow: 0 0 10px #ff4d4d;
+}
+
+/* =========================================================
+ENDPOINT
+========================================================= */
+.endpoint {
+    flex: 1;
+    font-size: 14px;
+    color: var(--text-main);
+    text-shadow: 0 0 6px rgba(0,229,255,.4);
+}
+
+/* =========================================================
+ROUTE LEADING / SVG
+========================================================= */
+.route-leading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.svg-box {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: linear-gradient(145deg, #05090e, #020406);
+    border: 1px solid var(--border);
+    box-shadow:
+        inset 0 0 8px rgba(0,229,255,.15),
+        0 0 10px rgba(0,229,255,.2);
+    position: relative;
+}
+
+.svg-box::before,
+.svg-box::after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border: 1px solid var(--cyan);
+    opacity: .4;
+}
+
+.svg-box::before {
+    top: 2px;
+    left: 2px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.svg-box::after {
+    bottom: 2px;
+    right: 2px;
+    border-left: none;
+    border-top: none;
+}
+
+.svg-box svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--cyan);
+    filter:
+        drop-shadow(0 0 6px var(--cyan))
+        drop-shadow(0 0 12px rgba(0,229,255,.4));
+}
+
+/* =========================================================
+BADGES
+========================================================= */
+.route-badge {
+    background: linear-gradient(145deg, #03070b, #020406);
+    border: 1px solid var(--border);
+    color: var(--cyan-soft);
+    text-transform: uppercase;
+    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: 1px;
+    box-shadow:
+        inset 0 0 8px rgba(0,229,255,.15),
+        0 0 6px rgba(0,229,255,.2);
+}
+
+/* =========================================================
+PANELS
+========================================================= */
+.route-content {
+    background: linear-gradient(145deg, #070b10, #04070b);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px;
+    box-shadow: inset 0 0 20px rgba(0,229,255,.1), var(--glow);
+}
+
+/* =========================================================
+HIDDEN SAFETY
+========================================================= */
+.route.visibility-hidden,
+.route-content.visibility-hidden {
+    max-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* =========================================================
+PARAMS & QUERY
+========================================================= */
+.params-section,
+.query-section {
+    background: #03070b;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px;
+}
+
+.title {
+    color: var(--cyan);
+    font-size: 11px;
+    margin-bottom: 8px;
+}
+
+/* =========================================================
+INPUTS
+========================================================= */
+input {
+    background: #020406;
+    border: 1px solid var(--border);
+    color: var(--cyan);
+    padding: 8px 10px;
+    border-radius: var(--radius-xs);
+    box-shadow: inset 0 0 6px rgba(0,229,255,.25);
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--cyan);
+    box-shadow: 0 0 10px var(--cyan);
+}
+
+/* =========================================================
+OBJECT / JSON / YAML VIEW
+========================================================= */
+.input-schema-container,
+.output-schema-container {
+    background: #020508;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    box-shadow: inset 0 0 20px rgba(0,229,255,.12);
+}
+
+/* indentation & tree feel */
+.json-canvas,
+.json-object-container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-left: 16px;
+    border-left: 2px solid rgba(0,229,255,.2);
+}
+
+/* brackets */
+.bracket {
+    color: var(--cyan);
+    text-shadow: 0 0 6px var(--cyan);
+    font-weight: bold;
+}
+
+/* key/value cards */
+.key-input-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.key-input-card span:first-child {
+    color: var(--text-muted);
+}
+
+.key-input-card span:nth-child(2) {
+    color: var(--cyan-soft);
+}
+
+/* fake JS/YAML look */
+.key-input-card::before {
+    content: "›";
+    color: var(--cyan);
+    margin-right: 6px;
+}
+
+/* =========================================================
+SELECT
+========================================================= */
+.header-options {
+    background: #020406;
+    border: 1px solid var(--border);
+    color: var(--cyan);
+    padding: 6px 10px;
+    border-radius: var(--radius-xs);
+}
+
+/* =========================================================
+EXECUTE BUTTON
+========================================================= */
+.route-btn-executer {
+    margin-top: 16px;
+    padding: 12px 28px;
+    background: black;
+    color: var(--cyan);
+    border: 1px solid var(--cyan);
+    border-radius: var(--radius-xs);
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 0 14px var(--cyan);
+}
+
+.route-btn-executer:hover {
+    background: var(--cyan);
+    color: black;
+    box-shadow: 0 0 30px var(--cyan);
+}

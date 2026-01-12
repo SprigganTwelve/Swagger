@@ -1,33 +1,33 @@
 /* =========================================================
-RESET & ROOT - GAMERS ULTRA MODERN ANIMÉ
+RESET & ROOT - OTAKU STYLE ANIMÉ
 ========================================================= */
 :root {
-    --bg-main: #0a0a14;
-    --bg-panel: #11111f;
-    --bg-panel-soft: #161629;
-    --bg-glass: rgba(10, 10, 20, 0.85);
+    --bg-main: #1a0a2a; /* violet profond */
+    --bg-panel: #2c0f3e; 
+    --bg-panel-soft: #3a1a52; 
+    --bg-glass: rgba(255, 255, 255, 0.12);
 
-    --border: #444466;
-    --border-glow: rgba(255, 0, 255, 0.5);
+    --border: #ff80ff; 
+    --border-glow: rgba(255, 192, 203, 0.6);
 
-    --blue: #00ffff;
-    --blue-soft: #66ffff;
-    --green: #39ff14;
-    --red: #ff073a;
-    --orange: #ff6f00;
-    --yellow: #ffd300;
-    --purple: #bb00ff;
-    --pink: #ff00ff;
+    --blue: #89cff0;
+    --blue-soft: #b0e0ff;
+    --green: #a6ffb0;
+    --red: #ff6f91;
+    --orange: #ffb347;
+    --yellow: #fff275;
+    --purple: #c39eff;
+    --pink: #ffb6c1;
 
-    --text-main: #e0e0ff;
-    --text-muted: #8888aa;
+    --text-main: #f8f4ff;
+    --text-muted: #d4cfff;
 
     --radius: 12px;
     --radius-sm: 8px;
     --radius-xs: 6px;
 
-    --glow-blue: 0 0 22px rgba(0,255,255,0.7);
-    --glow-soft: 0 0 14px rgba(255,0,255,0.25);
+    --glow-pink: 0 0 18px rgba(255,182,193,0.6);
+    --glow-soft: 0 0 12px rgba(255,192,203,0.3);
 }
 
 /* =========================================================
@@ -42,35 +42,39 @@ BASE RESET
 
 body {
     min-height: 100vh;
-    background: radial-gradient(circle at top left, #0a0a14, #101028, #0a0a14);
+    background: radial-gradient(circle at top left, #1a0a2a, #2c0f3e, #1a0a2a);
     color: var(--text-main);
     overflow-x: hidden;
-    animation: bgPulse 12s infinite alternate;
+    animation: bgAnime 12s infinite alternate;
 }
 
 /* =========================================================
-ANIMATIONS GÉNÉRALES
+ANIMATIONS GÉNÉRALES OTAKU
 ========================================================= */
-@keyframes bgPulse {
-    0% { background-position: top left; filter: brightness(1); }
-    50% { background-position: bottom right; filter: brightness(1.1); }
-    100% { background-position: top left; filter: brightness(1); }
-}
-
-@keyframes neonPulse {
-    0%, 100% { text-shadow: 0 0 6px var(--pink), 0 0 12px var(--blue); }
-    50% { text-shadow: 0 0 14px var(--pink), 0 0 28px var(--blue); }
+@keyframes bgAnime {
+    0% { filter: brightness(1); background-position: 0% 0%; }
+    50% { filter: brightness(1.1); background-position: 100% 100%; }
+    100% { filter: brightness(1); background-position: 0% 0%; }
 }
 
 @keyframes glowPulse {
     0%, 100% { box-shadow: var(--glow-soft); }
-    50% { box-shadow: 0 0 28px rgba(255,0,255,0.7), 0 0 28px rgba(0,255,255,0.7); }
+    50% { box-shadow: 0 0 22px rgba(255,182,193,0.7), 0 0 22px rgba(137,207,240,0.7); }
 }
 
-@keyframes moveGradient {
-    0% { background-position: 0% 0%; }
-    50% { background-position: 100% 100%; }
-    100% { background-position: 0% 0%; }
+@keyframes neonText {
+    0%,100% { text-shadow: 0 0 6px var(--pink), 0 0 12px var(--blue); }
+    50% { text-shadow: 0 0 16px var(--pink), 0 0 28px var(--blue); }
+}
+
+@keyframes floatUpDown {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+@keyframes sparkle {
+    0%,100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.7; }
 }
 
 /* =========================================================
@@ -84,9 +88,9 @@ HEADER
 ========================================================= */
 header {
     padding: 22px 32px;
-    background: linear-gradient(135deg, #0f0f2a, #2a003f);
+    background: linear-gradient(135deg, #3a1a52, #50237f);
     border-bottom: 1px solid var(--border);
-    box-shadow: var(--glow-blue);
+    box-shadow: var(--glow-pink);
     display: flex;
     align-items: center;
     gap: 20px;
@@ -96,9 +100,9 @@ header h1 {
     font-size: 22px;
     font-weight: 700;
     color: var(--pink);
-    text-shadow: 0 0 10px var(--pink), 0 0 20px var(--blue);
+    text-shadow: 0 0 12px var(--pink), 0 0 24px var(--blue);
     margin-right: auto;
-    animation: neonPulse 2s infinite;
+    animation: neonText 2s infinite;
 }
 
 header input {
@@ -108,14 +112,14 @@ header input {
     border: 1px solid var(--border);
     background: var(--bg-glass);
     color: var(--blue-soft);
-    box-shadow: 0 0 12px rgba(0,255,255,0.3);
+    box-shadow: 0 0 10px rgba(255,182,193,0.3);
     transition: all 0.3s ease;
 }
 
 header input:focus {
     outline: none;
     border-color: var(--pink);
-    box-shadow: 0 0 22px var(--pink);
+    box-shadow: 0 0 20px var(--pink);
     animation: glowPulse 1.5s infinite alternate;
 }
 
@@ -136,12 +140,12 @@ CONTAINER
     font-size: 20px;
     color: var(--pink);
     margin-bottom: 20px;
-    text-shadow: 0 0 10px var(--pink), 0 0 20px var(--blue);
-    animation: neonPulse 2s infinite;
+    text-shadow: 0 0 12px var(--pink), 0 0 24px var(--blue);
+    animation: neonText 2s infinite;
 }
 
 /* =========================================================
-ROUTE CARD
+ROUTE CARD OTAKU
 ========================================================= */
 .route {
     display: flex;
@@ -149,7 +153,7 @@ ROUTE CARD
     gap: 16px;
     padding: 18px 22px;
     border-radius: var(--radius);
-    background: linear-gradient(145deg, #14142e, #24004a);
+    background: linear-gradient(145deg, #3a1a52, #50237f);
     border: 1px solid var(--border);
     cursor: pointer;
     margin-bottom: 16px;
@@ -157,17 +161,17 @@ ROUTE CARD
     box-shadow: var(--glow-soft);
     transition: all 0.3s ease;
     background-size: 200% 200%;
-    animation: moveGradient 8s infinite linear;
+    animation: bgAnime 8s infinite linear;
 }
 
 .route::before {
-    content: "";
+    content: "✨";
     position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(120deg, transparent, rgba(255,0,255,0.25), transparent);
+    top: 8px;
+    right: 12px;
+    font-size: 16px;
     opacity: 0;
-    transition: .4s;
+    animation: sparkle 3s infinite;
 }
 
 .route:hover::before {
@@ -175,20 +179,22 @@ ROUTE CARD
 }
 
 .route:hover {
-    box-shadow: 0 0 32px rgba(255,0,255,0.8), 0 0 32px rgba(0,255,255,0.8);
+    box-shadow: 0 0 28px rgba(255,182,193,0.8), 0 0 28px rgba(137,207,240,0.8);
     transform: translateY(-2px);
 }
 
 /* =========================================================
-METHOD
+METHOD OTAKU
 ========================================================= */
 .method {
     font-size: 11px;
     font-weight: 700;
     padding: 6px 14px;
     border-radius: var(--radius-xs);
-    color: #0a0a14;
+    color: #fff0f5;
     letter-spacing: .5px;
+    text-shadow: 0 0 4px var(--pink);
+    animation: floatUpDown 3s infinite ease-in-out;
 }
 
 .GET { background: var(--green); }
@@ -198,22 +204,22 @@ METHOD
 .DELETE { background: var(--red); }
 
 /* =========================================================
-ENDPOINT
+ENDPOINT OTAKU
 ========================================================= */
 .endpoint {
     flex: 1;
     color: var(--text-main);
     font-size: 14px;
-    text-shadow: 0 0 8px rgba(0,255,255,0.6), 0 0 12px rgba(255,0,255,0.4);
+    text-shadow: 0 0 8px rgba(137,207,240,.5), 0 0 10px rgba(255,182,193,.5);
     transition: all 0.3s ease;
 }
 
 .route:hover .endpoint {
-    text-shadow: 0 0 14px rgba(0,255,255,0.9), 0 0 20px rgba(255,0,255,0.8);
+    text-shadow: 0 0 16px rgba(137,207,240,.8), 0 0 22px rgba(255,182,193,.8);
 }
 
 /* =========================================================
-ROUTE LEADING
+ROUTE LEADING / SVG OTAKU
 ========================================================= */
 .route-leading {
     display: flex;
@@ -222,23 +228,28 @@ ROUTE LEADING
 }
 
 .svg-box svg {
-    width: 20px;
-    height: 20px;
-    fill: var(--text-muted);
-    transition: .3s;
+    width: 24px;
+    height: 24px;
+    fill: var(--pink);
+    transition: all 0.3s ease;
+    transform: rotate(0deg);
+    animation: floatUpDown 3s infinite ease-in-out;
 }
 
 .route:hover .svg-box svg {
-    fill: var(--blue);
+    fill: var(--blue-soft);
+    transform: rotate(15deg);
 }
 
 .route-badge {
     font-size: 11px;
     padding: 4px 10px;
-    border-radius: var(--radius-xs);
-    background: linear-gradient(145deg, #1a0a3f, #3b0066);
-    border: 1px solid var(--border);
-    color: var(--text-muted);
+    border-radius: 50px;
+    background: linear-gradient(145deg, #ffb6c1, #ffa0e0);
+    border: 1px solid var(--pink);
+    color: var(--text-main);
+    text-shadow: 0 0 6px #fff0f5;
+    animation: floatUpDown 4s infinite ease-in-out;
 }
 
 /* =========================================================
@@ -246,13 +257,13 @@ ROUTE CONTENT PANEL
 ========================================================= */
 .route-content,
 .display-none.visibility-hidden:not(.route) {
-    background: linear-gradient(145deg, #101028, #1a003f);
+    background: linear-gradient(145deg, #3a1a52, #50237f);
     border-radius: var(--radius);
     border: 1px solid var(--border);
     padding: 24px;
     margin-bottom: 25px;
     box-shadow: var(--glow-soft);
-    animation: moveGradient 10s infinite linear;
+    animation: bgAnime 10s infinite linear;
 }
 
 /* =========================================================
@@ -260,7 +271,7 @@ PARAMS / QUERIES
 ========================================================= */
 .params-section,
 .query-section {
-    background: linear-gradient(135deg, #1a0a28, #2b0040);
+    background: linear-gradient(135deg, #50237f, #7147a3);
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
     padding: 14px;
@@ -271,8 +282,8 @@ PARAMS / QUERIES
     font-size: 12px;
     color: var(--pink);
     margin-bottom: 10px;
-    text-shadow: 0 0 6px var(--pink), 0 0 12px var(--blue);
-    animation: neonPulse 2s infinite;
+    text-shadow: 0 0 8px var(--pink), 0 0 16px var(--blue);
+    animation: neonText 2s infinite;
 }
 
 .inputs-row {
@@ -298,15 +309,15 @@ input:focus {
 }
 
 /* =========================================================
-JSON EDITOR
+JSON EDITOR OTAKU
 ========================================================= */
 .input-schema-container {
-    background: linear-gradient(145deg, #1a0028, #2e0044);
+    background: linear-gradient(145deg, #50237f, #7147a3);
     border-radius: var(--radius);
     padding: 16px;
     border: 1px solid var(--border);
     box-shadow: var(--glow-soft);
-    animation: moveGradient 12s infinite linear;
+    animation: bgAnime 12s infinite linear;
 }
 
 .json-canvas {
@@ -317,9 +328,9 @@ JSON EDITOR
 }
 
 .bracket {
-    color: #39ff14;
+    color: #a6ffb0;
     font-weight: 700;
-    animation: neonPulse 1.5s infinite;
+    animation: sparkle 2s infinite;
 }
 
 .key-input-card {
@@ -334,7 +345,7 @@ JSON EDITOR
 }
 
 /* =========================================================
-SELECT
+SELECT OTAKU
 ========================================================= */
 .header-options {
     background: var(--bg-glass);
@@ -346,27 +357,27 @@ SELECT
 }
 
 .header-options:hover {
-    box-shadow: 0 0 20px var(--pink), 0 0 20px var(--blue);
+    box-shadow: 0 0 20px #ffb6c1, 0 0 20px #89cff0;
 }
 
 /* =========================================================
-EXECUTE BUTTON
+EXECUTE BUTTON OTAKU
 ========================================================= */
 .route-btn-executer {
     margin-top: 15px;
     padding: 12px 26px;
     border-radius: var(--radius-xs);
     border: 1px solid var(--border);
-    background: linear-gradient(135deg, #ff00ff, #ff1493);
+    background: linear-gradient(135deg, #ffb6c1, #ff99cc);
     color: white;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 0 18px rgba(255,0,255,0.6);
+    box-shadow: 0 0 18px rgba(255,182,193,0.6);
     transition: all 0.3s ease;
     animation: glowPulse 2s infinite alternate;
 }
 
 .route-btn-executer:hover {
-    background: linear-gradient(135deg, #ff1493, #ff00ff);
-    box-shadow: 0 0 35px rgba(0,255,255,0.8), 0 0 35px rgba(255,0,255,0.8);
+    background: linear-gradient(135deg, #ff99cc, #ffb6c1);
+    box-shadow: 0 0 35px rgba(137,207,240,0.8), 0 0 35px rgba(255,182,193,0.8);
 }

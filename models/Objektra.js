@@ -20,6 +20,7 @@ class Objektra
         this.flexibility = flexibility
 
         this.canvas = document.createElement('div');
+        this.canvas.className = 'json-canvas'
         if(mode == "simple-json-object"){
             this.buildJSONObjectView({rootElement: this.canvas, entries: this.entries});
         }
@@ -49,9 +50,13 @@ class Objektra
                     Depth
                 })
             )
+                    
+            // if()
+                //     rootElement.appendChild(this.__createKeySpliter(Depth))
         })
 
         rootElement.appendChild(ObjektraRenderer._createBracket(isArrayInput, false))
+
     }
 
 
@@ -60,7 +65,7 @@ class Objektra
         row.className = "key-input-card"
         row.style.marginLeft = `${Depth * this.HShift}px`
 
-        row.appendChild(ObjektraRenderer._createKey(entry, index, isArrayInput))
+        row.appendChild(ObjektraRenderer._createStaticKey(entry, index, isArrayInput))
 
         if((entry instanceof ObjektraField && (entry.type === ValueType.Object || entry.type === ValueType.Array)))
         {
@@ -74,8 +79,9 @@ class Objektra
 
                 row.appendChild(ObjektraRenderer._generateInput({                       //Represent data using options (object)
                     entry: entry[0],
-                    flexibility: this.flexibility,
                     isArrayInput: false,
+                    HShift: this.HShift,
+                    flexibility: this.flexibility,
                     arrayFieldConfig: entry[1],
                     inputCallback: (event)=> entry[0] = event.target.value, Depth,
                 }))
@@ -90,6 +96,17 @@ class Objektra
             row.appendChild(ObjektraRenderer._generateInput({entry, isArrayInput, Depth, flexibility: this.flexibility}))
         }
         return row
+    }
+
+
+
+
+    __createKeySpliter(Depth){
+        const keySpliter = document.createElement('span')
+        keySpliter.className = 'key-spliters'
+        keySpliter.textContent = ","
+        keySpliter.style.marginLeft = `${Depth * this.HShift}px`
+        return keySpliter
     }
 
     

@@ -1,34 +1,38 @@
 /* =========================================================
-RESET & ROOT
+SIMPLE DARK THEME — VARIABLES
 ========================================================= */
 :root {
-    --bg-main: #050810;
-    --bg-panel: #0d1117;
-    --bg-panel-soft: #101426;
-    --bg-glass: rgba(1, 4, 9, 0.85);
+    --bg-main: #0d0d0d;
+    --bg-panel: #1a1a1a;
+    --bg-panel-soft: #262626;
+    --bg-glass: rgba(255,255,255,0.05);
 
-    --border: #30363d;
-    --border-glow: rgba(88, 166, 255, 0.4);
+    --border: #333333;
+    --border-glow: rgba(255,255,255,0.08);
 
-    --blue: #58a6ff;
-    --blue-soft: #79c0ff;
-    --green: #2ea043;
-    --red: #f85149;
-    --orange: #db6d28;
-    --yellow: #d29922;
-    --purple: #8957e5;
+    --blue: #3a8ee6;
+    --blue-soft: #5aa0f2;
+    --green: #2aa44f;
+    --red: #d73a49;
+    --orange: #ff8c42;
+    --yellow: #f1c40f;
+    --purple: #8e44ad;
+    --pink: #ff69b4;
 
-    --text-main: #c9d1d9;
-    --text-muted: #8b949e;
+    --text-main: #e0e0e0;
+    --text-muted: #aaaaaa;
 
     --radius: 12px;
     --radius-sm: 8px;
     --radius-xs: 6px;
 
-    --glow-blue: 0 0 18px rgba(88,166,255,0.45);
-    --glow-soft: 0 0 12px rgba(88,166,255,0.15);
+    --glow-soft: 0 0 6px rgba(255,255,255,0.05);
+    --glow-diffused: 0 0 4px rgba(255,255,255,0.02);
 }
 
+/* =========================================================
+RESET & BASE
+========================================================= */
 * {
     margin: 0;
     padding: 0;
@@ -38,7 +42,7 @@ RESET & ROOT
 
 body {
     min-height: 100vh;
-    background: radial-gradient(circle at top left, #0a0f1a, #0f192f, #050810);
+    background: var(--bg-main);
     color: var(--text-main);
     overflow-x: hidden;
 }
@@ -47,16 +51,16 @@ body {
 UTILITY
 ========================================================= */
 .display-none { display: none !important; }
-.visibility-hidden { visibility: hidden !important; }
+.visibility-hidden { visibility: hidden !important; opacity: 0; pointer-events: none !important; }
 
 /* =========================================================
 HEADER
 ========================================================= */
 header {
     padding: 22px 32px;
-    background: linear-gradient(135deg, #0c0f2a, #191c3f);
+    background: linear-gradient(135deg, #1a1a1a, #262626);
     border-bottom: 1px solid var(--border);
-    box-shadow: var(--glow-blue);
+    box-shadow: var(--glow-soft);
     display: flex;
     align-items: center;
     gap: 20px;
@@ -66,8 +70,9 @@ header h1 {
     font-size: 22px;
     font-weight: 700;
     color: var(--blue);
-    text-shadow: 0 0 8px var(--blue);
+    text-shadow: 0 0 3px var(--blue-soft);
     margin-right: auto;
+    animation: headerPulse 4s infinite alternate;
 }
 
 header input {
@@ -77,13 +82,15 @@ header input {
     border: 1px solid var(--border);
     background: var(--bg-glass);
     color: var(--text-main);
-    box-shadow: 0 0 10px rgba(88,166,255,0.2);
+    box-shadow: var(--glow-diffused);
+    transition: all 0.3s ease;
+    animation: inputShimmer 5s infinite alternate;
 }
 
 header input:focus {
     outline: none;
     border-color: var(--blue);
-    box-shadow: var(--glow-blue);
+    box-shadow: 0 0 6px var(--blue-soft);
 }
 
 /* =========================================================
@@ -103,7 +110,8 @@ CONTAINER
     font-size: 20px;
     color: var(--blue);
     margin-bottom: 20px;
-    text-shadow: 0 0 10px var(--blue);
+    text-shadow: 0 0 2px var(--blue-soft);
+    animation: titleBounce 5s infinite alternate;
 }
 
 /* =========================================================
@@ -115,31 +123,30 @@ ROUTE CARD
     gap: 16px;
     padding: 18px 22px;
     border-radius: var(--radius);
-    background: linear-gradient(145deg, #0f1424, #1b2040);
+    background: linear-gradient(145deg, #1a1a1a, #262626);
     border: 1px solid var(--border);
     cursor: pointer;
     margin-bottom: 16px;
     position: relative;
-    box-shadow: var(--glow-soft);
+    box-shadow: var(--glow-diffused);
     transition: all 0.3s ease;
 }
 
 .route::before {
-    content: "";
+    content: "•";
     position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(120deg, transparent, rgba(88,166,255,0.12), transparent);
-    opacity: 0;
-    transition: 0.4s;
+    top: 8px;
+    right: 12px;
+    font-size: 16px;
+    color: var(--blue-soft);
+    opacity: 0.4;
+    animation: dotFloat 6s infinite alternate;
 }
 
-.route:hover::before {
-    opacity: 1;
-}
+.route:hover::before { opacity: 0.7; }
 
 .route:hover {
-    box-shadow: var(--glow-blue);
+    box-shadow: 0 0 10px var(--glow-soft);
     transform: translateY(-1px);
 }
 
@@ -151,8 +158,9 @@ METHOD
     font-weight: 700;
     padding: 6px 14px;
     border-radius: var(--radius-xs);
-    color: #050810;
     letter-spacing: 0.5px;
+    color: #ffffff;
+    text-shadow: 0 0 2px rgba(0,0,0,0.1);
 }
 
 .GET { background: var(--green); }
@@ -166,13 +174,14 @@ ENDPOINT
 ========================================================= */
 .endpoint {
     flex: 1;
-    color: var(--text-main);
     font-size: 14px;
-    text-shadow: 0 0 6px rgba(88,166,255,0.5);
+    color: var(--text-main);
+    text-shadow: 0 0 1px var(--text-muted);
+    animation: endpointPulse 6s infinite alternate;
 }
 
 /* =========================================================
-ROUTE LEADING
+ROUTE LEADING / SVG
 ========================================================= */
 .route-leading {
     display: flex;
@@ -181,23 +190,23 @@ ROUTE LEADING
 }
 
 .svg-box svg {
-    width: 20px;
-    height: 20px;
-    fill: var(--text-muted);
-    transition: 0.3s;
+    width: 24px;
+    height: 24px;
+    fill: var(--blue);
+    transition: all 0.3s ease;
+    animation: svgWiggle 2s infinite alternate;
 }
 
-.route:hover .svg-box svg {
-    fill: var(--blue);
-}
+.route:hover .svg-box svg { fill: var(--blue-soft); }
 
 .route-badge {
     font-size: 11px;
     padding: 4px 10px;
-    border-radius: var(--radius-xs);
-    background: linear-gradient(145deg, #161b2b, #22274a);
+    border-radius: 50px;
+    background: linear-gradient(145deg, #262626, #1a1a1a);
     border: 1px solid var(--border);
-    color: var(--text-muted);
+    color: var(--text-main);
+    text-shadow: 0 0 2px var(--text-muted);
 }
 
 /* =========================================================
@@ -205,12 +214,12 @@ ROUTE CONTENT PANEL
 ========================================================= */
 .route-content,
 .display-none.visibility-hidden:not(.route) {
-    background: linear-gradient(145deg, #0b0f19, #13192b);
+    background: linear-gradient(145deg, #1a1a1a, #262626);
     border-radius: var(--radius);
     border: 1px solid var(--border);
     padding: 24px;
     margin-bottom: 25px;
-    box-shadow: var(--glow-soft);
+    box-shadow: var(--glow-diffused);
 }
 
 /* =========================================================
@@ -218,83 +227,74 @@ PARAMS / QUERIES
 ========================================================= */
 .params-section,
 .query-section {
-    background: linear-gradient(135deg, #12182a, #1b2140);
+    background: #262626;
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
     padding: 14px;
     margin-bottom: 16px;
 }
 
+.query-sectio input, .params-section input{
+    margin: 2px;
+}
+
 .title {
     font-size: 12px;
     color: var(--blue);
     margin-bottom: 10px;
-    text-shadow: 0 0 6px var(--blue);
 }
 
-.inputs-row {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
+/* =========================================================
+INPUTS
+========================================================= */
 input {
     padding: 8px 12px;
     border-radius: var(--radius-xs);
     border: 1px solid var(--border);
     background: var(--bg-glass);
-    color: var(--blue-soft);
-}
-
-input:focus {
-    outline: none;
-    border-color: var(--blue);
-    box-shadow: var(--glow-blue);
+    color: var(--text-main);
 }
 
 /* =========================================================
-JSON EDITOR
+JSON / OBJECT
 ========================================================= */
-.input-schema-container {
-    background: linear-gradient(145deg, #0c1020, #131a33);
+.input-schema-container,
+.output-schema-container {
+    background: #1a1a1a;
+    border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 16px;
-    border: 1px solid var(--border);
-    box-shadow: var(--glow-soft);
+    box-shadow: inset 0 0 8px rgba(255,255,255,0.05);
 }
 
-.json-canvas {
-    margin-top: 10px;
+.json-canvas,
+.json-object-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
+    padding-left: 16px;
+    border-left: 2px solid rgba(255,255,255,0.1);
 }
 
 .bracket {
-    color: #7ee787;
-    font-weight: 700;
+    color: var(--blue);
+    font-weight: bold;
 }
 
 .key-input-card {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
+    font-size: 13px;
 }
 
-.key-input-card span,
-.json-object-key {
-    color: var(--blue-soft);
-}
+.key-input-card span:first-child { color: var(--text-muted); }
+.key-input-card span:nth-child(2) { color: var(--blue-soft); }
 
-/* =========================================================
-SELECT
-========================================================= */
-.header-options {
-    background: var(--bg-glass);
-    border: 1px solid var(--border);
-    color: var(--text-main);
-    padding: 8px 12px;
-    border-radius: var(--radius-xs);
+.key-input-card::before {
+    content: "›";
+    color: var(--blue);
+    margin-right: 6px;
 }
 
 /* =========================================================
@@ -304,16 +304,27 @@ EXECUTE BUTTON
     margin-top: 15px;
     padding: 12px 26px;
     border-radius: var(--radius-xs);
-    border: 1px solid var(--border);
-    background: linear-gradient(135deg, #238636, #2ea043);
+    border: 1px solid var(--blue);
+    background: var(--blue);
     color: white;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 0 15px rgba(46,160,67,0.6);
+    box-shadow: 0 0 6px var(--blue-soft);
     transition: all 0.3s ease;
 }
 
 .route-btn-executer:hover {
-    background: linear-gradient(135deg, #2ea043, #3aff73);
-    box-shadow: 0 0 20px var(--blue);
+    background: var(--blue-soft);
+    color: white;
+    box-shadow: 0 0 10px var(--blue-soft);
 }
+
+/* =========================================================
+ANIMATIONS
+========================================================= */
+@keyframes headerPulse {0%{text-shadow:0 0 3px var(--blue-soft);}100%{text-shadow:0 0 8px var(--blue);}}
+@keyframes inputShimmer {0%{box-shadow:0 0 2px rgba(255,255,255,0.05);}50%{box-shadow:0 0 6px rgba(255,255,255,0.1);}100%{box-shadow:0 0 2px rgba(255,255,255,0.05);}}
+@keyframes titleBounce {0%,100%{transform:translateY(0);}50%{transform:translateY(-2px);}}
+@keyframes dotFloat {0%{transform:translateY(0);}50%{transform:translateY(-2px);}100%{transform:translateY(0);}}
+@keyframes endpointPulse {0%{text-shadow:0 0 1px var(--text-muted);}50%{text-shadow:0 0 3px var(--blue-soft);}100%{text-shadow:0 0 1px var(--text-muted);}}
+@keyframes svgWiggle {0%{transform: rotate(-3deg);}50%{transform: rotate(3deg);}100%{transform: rotate(-3deg);}}

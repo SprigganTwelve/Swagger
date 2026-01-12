@@ -1,0 +1,347 @@
+/* =========================================================
+DARK OTAKU THEME — VARIABLES
+========================================================= */
+:root {
+    --bg-main: #120c1f;
+    --bg-panel: #1c142f;
+    --bg-panel-soft: #2a1f3f;
+    --bg-glass: rgba(255,255,255,0.05);
+
+    --border: #6c3fa0;
+    --border-glow: rgba(108,63,160,0.5);
+
+    --blue: #6fa6ff;
+    --blue-soft: #9cc3ff;
+    --pink: #ff8ce8;
+    --purple: #c78fff;
+    --white-smoke: #e5e5e5;
+
+    --text-main: #f0edf8;
+    --text-muted: #a39fcf;
+
+    --radius: 12px;
+    --radius-sm: 8px;
+    --radius-xs: 6px;
+
+    --glow-soft: 0 0 12px rgba(108,63,160,0.25);
+    --glow-diffused: 0 0 8px rgba(108,63,160,0.15);
+}
+
+/* =========================================================
+RESET & BASE
+========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top left, #120c1f, #1c142f, #120c1f);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+/* =========================================================
+UTILITY
+========================================================= */
+.display-none { display: none !important; }
+.visibility-hidden { visibility: hidden !important; opacity: 0; pointer-events: none !important; }
+
+/* =========================================================
+HEADER
+========================================================= */
+header {
+    padding: 22px 32px;
+    background: linear-gradient(135deg, #1c142f, #2a1f3f);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--glow-soft);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--pink);
+    text-shadow: 0 0 8px var(--pink);
+    margin-right: auto;
+    animation: headerGlow 3s infinite alternate;
+}
+
+header input {
+    width: 280px;
+    padding: 10px 14px;
+    border-radius: var(--radius-xs);
+    border: 1px solid var(--border);
+    background: var(--bg-glass);
+    color: var(--blue-soft);
+    box-shadow: 0 0 6px rgba(108,63,160,0.2);
+    transition: all 0.3s ease;
+    animation: inputPulse 4s infinite alternate;
+}
+
+header input:focus {
+    outline: none;
+    border-color: var(--pink);
+    box-shadow: var(--glow-diffused);
+}
+
+/* =========================================================
+CONTAINER
+========================================================= */
+#container {
+    max-width: 1300px;
+    margin: auto;
+    padding: 30px;
+}
+
+.resource {
+    margin-bottom: 60px;
+}
+
+.resource-title {
+    font-size: 20px;
+    color: var(--pink);
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px var(--pink);
+    animation: titleBounce 5s infinite alternate;
+}
+
+/* =========================================================
+ROUTE CARD OTAKU
+========================================================= */
+.route {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    border-radius: var(--radius);
+    background: linear-gradient(145deg, #1c142f, #2a1f3f);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    margin-bottom: 16px;
+    position: relative;
+    box-shadow: inset 0 0 12px rgba(108,63,160,0.1), var(--glow-diffused);
+    transition: all 0.3s ease;
+}
+
+.route::before {
+    content: "✨";
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 18px;
+    opacity: 0.6;
+    animation: starFloat 6s infinite alternate;
+}
+
+.route:hover::before { opacity: 0.9; }
+
+.route:hover {
+    box-shadow: 0 0 18px rgba(108,63,160,0.35);
+    transform: translateY(-1px);
+}
+
+/* =========================================================
+METHOD OTAKU
+========================================================= */
+.method {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: var(--radius-xs);
+    color: var(--white-smoke);
+    background: var(--purple);
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 2px var(--pink);
+    animation: methodGlow 3s infinite alternate;
+}
+
+.GET { background: var(--blue); }
+.POST { background: var(--purple); }
+.PUT { background: var(--yellow); }
+.PATCH { background: var(--pink); }
+.DELETE { background: #ff4d7e; }
+
+/* =========================================================
+ENDPOINT OTAKU
+========================================================= */
+.endpoint {
+    flex: 1;
+    font-size: 14px;
+    color: var(--text-main);
+    text-shadow: 0 0 6px rgba(108,63,160,0.5), 0 0 6px rgba(255,140,232,0.3);
+    animation: endpointPulse 6s infinite alternate;
+}
+
+/* =========================================================
+ROUTE LEADING / SVG
+========================================================= */
+.route-leading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.svg-box svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--pink);
+    transition: all 0.3s ease;
+    animation: svgWiggle 2s infinite alternate;
+}
+
+.route:hover .svg-box svg { fill: var(--blue-soft); }
+
+.route-badge {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 50px;
+    background: linear-gradient(145deg, #6c3fa0, #9c6cff);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    text-shadow: 0 0 4px var(--pink);
+    animation: badgeFloat 4s infinite alternate;
+}
+
+/* =========================================================
+ROUTE CONTENT PANEL
+========================================================= */
+.route-content,
+.display-none.visibility-hidden:not(.route) {
+    background: linear-gradient(145deg, #1c142f, #2a1f3f);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 24px;
+    margin-bottom: 25px;
+    box-shadow: var(--glow-diffused);
+}
+
+/* =========================================================
+PARAMS / QUERIES
+========================================================= */
+.params-section,
+.query-section {
+    background: linear-gradient(135deg, #2a1f3f, #3b2c52);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    margin-bottom: 16px;
+    animation: paramsGlow 5s infinite alternate;
+}
+
+.title {
+    font-size: 12px;
+    color: var(--pink);
+    margin-bottom: 10px;
+    text-shadow: 0 0 4px var(--pink);
+    animation: titleShimmer 4s infinite alternate;
+}
+
+.inputs-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+input {
+    padding: 8px 12px;
+    border-radius: var(--radius-xs);
+    border: 1px solid var(--border);
+    background: var(--bg-glass);
+    color: var(--blue-soft);
+}
+
+/* =========================================================
+JSON / OBJECT OTAKU
+========================================================= */
+.input-schema-container,
+.output-schema-container {
+    background: linear-gradient(145deg, #2a1f3f, #3b2c52);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    box-shadow: inset 0 0 20px rgba(108,63,160,0.15), 0 0 12px rgba(255,140,232,0.15);
+    position: relative;
+    animation: objectGlow 6s infinite alternate;
+}
+
+.json-canvas,
+.json-object-container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-left: 16px;
+    border-left: 2px solid rgba(108,63,160,0.2);
+    position: relative;
+}
+
+.bracket {
+    color: var(--pink);
+    font-weight: bold;
+    text-shadow: 0 0 6px var(--pink);
+    animation: bracketPulse 4s infinite alternate;
+}
+
+.key-input-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    position: relative;
+    animation: keyFloat 5s infinite alternate;
+}
+
+.key-input-card span:first-child { color: var(--text-muted); text-shadow:0 0 2px var(--blue-soft); }
+.key-input-card span:nth-child(2) { color: var(--blue-soft); text-shadow:0 0 6px var(--blue-soft); }
+
+.key-input-card::before {
+    content: "›";
+    color: var(--pink);
+    margin-right: 6px;
+    animation: arrowFlicker 3s infinite alternate;
+}
+
+/* =========================================================
+EXECUTE BUTTON OTAKU
+========================================================= */
+.route-btn-executer {
+    margin-top: 15px;
+    padding: 12px 26px;
+    border-radius: var(--radius-xs);
+    border: 1px solid var(--pink);
+    background: linear-gradient(135deg, #6c3fa0, #9c6cff);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 0 12px rgba(108,63,160,0.4);
+    animation: buttonGlow 3s infinite alternate;
+}
+
+.route-btn-executer:hover {
+    background: var(--pink);
+    box-shadow: 0 0 20px rgba(108,63,160,0.5), 0 0 12px rgba(255,140,232,0.3);
+}
+
+/* =========================================================
+ANIMATIONS
+========================================================= */
+@keyframes headerGlow {0%{text-shadow:0 0 8px var(--pink);}100%{text-shadow:0 0 18px var(--pink);}}
+@keyframes inputPulse {0%{box-shadow:0 0 6px rgba(108,63,160,0.2);}50%{box-shadow:0 0 12px rgba(108,63,160,0.3);}100%{box-shadow:0 0 6px rgba(108,63,160,0.2);}}
+@keyframes titleBounce {0%,100%{transform:translateY(0);}50%{transform:translateY(-3px);}}
+@keyframes starFloat {0%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-4px) rotate(10deg);}100%{transform:translateY(0) rotate(0deg);}}
+@keyframes methodGlow {0%{box-shadow:0 0 2px var(--pink);}100%{box-shadow:0 0 10px var(--pink);}}
+@keyframes endpointPulse {0%{text-shadow:0 0 6px rgba(108,63,160,0.5);}50%{text-shadow:0 0 12px rgba(108,63,160,0.7);}100%{text-shadow:0 0 6px rgba(108,63,160,0.5);}}
+@keyframes svgWiggle {0%{transform: rotate(-5deg);}50%{transform: rotate(5deg);}100%{transform: rotate(-5deg);}}
+@keyframes badgeFloat {0%{transform: translateY(0);}50%{transform: translateY(-4px);}100%{transform: translateY(0);}}
+@keyframes paramsGlow {0%{box-shadow:0 0 4px rgba(108,63,160,0.1);}50%{box-shadow:0 0 10px rgba(108,63,160,0.2);}100%{box-shadow:0 0 4px rgba(108,63,160,0.1);}}
+@keyframes titleShimmer {0%{text-shadow:0 0 2px var(--pink);}50%{text-shadow:0 0 6px var(--pink);}100%{text-shadow:0 0 2px var(--pink);}}
+@keyframes objectGlow {0%{box-shadow:inset 0 0 10px rgba(108,63,160,0.1),0 0 6px rgba(255,140,232,0.1);}50%{box-shadow:inset 0 0 20px rgba(108,63,160,0.2),0 0 12px rgba(255,140,232,0.15);}100%{box-shadow:inset 0 0 10px rgba(108,63,160,0.1),0 0 6px rgba(255,140,232,0.1);}}
+@keyframes bracketPulse {0%{text-shadow:0 0 6px var(--pink);}50%{text-shadow:0 0 12px var(--pink),0 0 16px rgba(108,63,160,0.4);}100%{text-shadow:0 0 6px var(--pink);}}
+@keyframes keyFloat {0%{transform:translateY(0);}50%{transform:translateY(-2px);}100%{transform:translateY(0);}}
+@keyframes arrowFlicker {0%{color:var(--pink);}50%{color:var(--blue-soft);}100%{color:var(--pink);}}
+@keyframes buttonGlow {0%{box-shadow:0 0 12px rgba(108,63,160,0.4);}50%{box-shadow:0 0 20px rgba(108,63,160,0.5);}100%{box-shadow:0 0 12px rgba(108,63,160,0.4);}}

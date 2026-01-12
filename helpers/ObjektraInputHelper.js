@@ -43,7 +43,7 @@ class ObjektraInputHelper
 
 
 
-    static _materializeObjektra({ entry, editableMode, arrayFieldConfig, isArrayInput, inputCallback, Depth = 1 })
+    static _materializeObjektra({ entry, editableMode, arrayFieldConfig, isArrayInput, inputCallback, Depth = 1, HShift })
     {
         const container = document.createElement('div')
         container.className = isArrayInput
@@ -55,8 +55,8 @@ class ObjektraInputHelper
 
         if (isObjectInput) {
             container.append(
-                ObjektraRenderer._createBracket(isArrayInput, true),
-                this._resolveKeyRenderer({ entry, editableMode, arrayFieldConfig, Depth })
+                HTMLHelper.style(ObjektraRenderer._createBracket(isArrayInput, true)).marginLeft('17px'),
+                this._resolveKeyRenderer({ entry, editableMode, arrayFieldConfig, Depth, HShift })
             )
         }
 
@@ -65,7 +65,7 @@ class ObjektraInputHelper
         )
 
         if (isObjectInput) {
-            container.appendChild(ObjektraRenderer._createBracket(isArrayInput, false))
+            container.appendChild(HTMLHelper.style(ObjektraRenderer._createBracket(isArrayInput, false)).marginLeft('17px'))
         }
 
         return container
@@ -74,7 +74,7 @@ class ObjektraInputHelper
 
 
 
-    static _resolveKeyRenderer({ entry, editableMode, arrayFieldConfig, Depth }) {
+    static _resolveKeyRenderer({ entry, editableMode, arrayFieldConfig, Depth, HShift }) {
         const hasArrayConfig = arrayFieldConfig !== undefined
         const isEditable =
             hasArrayConfig
@@ -82,21 +82,16 @@ class ObjektraInputHelper
                 : (editableMode === "editable-key" || editableMode === "editable")
 
         if (isEditable) {
-            const key = document.createElement('div')
-            key.className = "key-container"
-
-            const input = this._createEditableInput( entry.key ?? "", "text", e => entry.key = e.target.value )
-            const span = document.createElement('span')
-
-            span.textContent = " : "
-            key.append(input, span)
-            return key
+            return HTMLHelper
+                    .style(ObjektraInputHelper._createDynamicKey(entry))
+                    .marginLeft(`${Depth * HShift}px`)
         }
 
         return HTMLHelper
-            .style(ObjektraRenderer._createKey(entry))
-            .marginLeft(`${Depth * this.HShift}px`)
+            .style(ObjektraRenderer._createStaticKey(entry))
+            .marginLeft(`${Depth * HShift}px`)
     }
+
 
 
 
@@ -111,15 +106,18 @@ class ObjektraInputHelper
         if (!isEditable) {
             console.log(hasArrayConfig ? { entry, edit:(arrayFieldConfig.editable || arrayFieldConfig.editableValue) }: "")
             return this._createReadOnlyValue(
-                 entry.value ?? "null"
+                 entry.value ?? "  null"
             )
         }
 
-        return this._createEditableInput(
-            this._getTypeLabel(entry),
-            this._getInputType(entry),
-            e => inputCallback ? inputCallback(e) : (entry.value = e.target.value)
-        )
+        const input =  this._createEditableInput(
+                            this._getTypeLabel(entry),
+                            this._getInputType(entry),
+                            e => inputCallback ? inputCallback(e) : (entry.value = e.target.value)
+                        )
+        input.style.marginLeft = "5px"
+        input.style.display = 'inline-block'
+        return input
     }
 
 
@@ -139,6 +137,20 @@ class ObjektraInputHelper
 
 
 
+    static _createDynamicKey(objectField){
+        const key = document.createElement('div')
+        key.style.display = 'inline-block'
+        key.className = "key-container"
+
+        const input = this._createEditableInput( objectField.key ?? "", "text", e => objectField.key = e.target.value )
+        const span = document.createElement('span')
+
+        span.textContent = " : "
+        key.append(input, span)
+        return key
+    }
+
+
 
     static _createEditableInput(placeholder = "", type = "text", inputCallback) {
         const input = document.createElement('input')
@@ -151,8 +163,11 @@ class ObjektraInputHelper
             if(inputCallback)
                 inputCallback(e)
         })
+        const container = document.createElement('div')
+        container.appendChild(input)
+        container.style.display = 'inline-block'
 
-        return input
+        return container
     }
 
 

@@ -17,12 +17,16 @@ class ObjektraRenderer
     }
 
 
-    static _createKey(entry, index, isArrayInput, textClassName = "json-object-text") {
-        const key = document.createElement('span')
+
+    static _createStaticKey(entry, index, isArrayInput, textClassName = "json-object-key") {
+        const key = document.createElement('div')
         key.className = textClassName
-        key.textContent =  isArrayInput ? `${index ?? 'index'} : ` : `${entry.key ?? "key"}: `
+        key.style.display = 'inline-block'
+        key.textContent =  isArrayInput ? `${index ?? 'index'} : ` : `${entry.key ?? "key"} : `
         return key
     }
+
+
 
 
     static _createSubObject(entry, Depth, buildJSONObjectView) {
@@ -46,6 +50,8 @@ class ObjektraRenderer
     }
 
 
+
+
     static _createBracket(isArrayInput, isLeft) {
         const b = document.createElement('div')
         b.className = 'bracket'
@@ -56,7 +62,9 @@ class ObjektraRenderer
     }
 
 
-    static _generateInput({entry, isArrayInput, arrayFieldConfig, inputCallback, Depth = 1, flexibility })
+
+    
+    static _generateInput({entry, isArrayInput, arrayFieldConfig, inputCallback, Depth = 1, flexibility, HShift })
     {
         const isField = entry instanceof ObjektraField
         const editableMode = ObjektraInputHelper._resolveFlexibilityMode(flexibility)
@@ -76,7 +84,7 @@ class ObjektraRenderer
         }
 
         const container = ObjektraInputHelper._materializeObjektra({ 
-            entry ,
+            entry , HShift,
             editableMode, arrayFieldConfig, isArrayInput , inputCallback, Depth
         })
         return container
