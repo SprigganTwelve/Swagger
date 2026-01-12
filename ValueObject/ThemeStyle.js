@@ -1,11 +1,12 @@
 
 
 class ThemeStyle {
-    static String = Symbol("String")
-    static Number = Symbol("Number")
+    static OTAKU  = "otaku-theme.css"
+    static GAMERS = "gamers-theme.css"
     static Hackers= "hackers-theme.css"
     static GALAXY = "galaxy-theme.css"
     static IDE    = "ide-theme.css"
+    //.. create your own style if you want uwing the html structure
 }
 
 

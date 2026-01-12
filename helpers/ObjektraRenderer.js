@@ -38,8 +38,11 @@ class ObjektraRenderer
         return sub
     }
 
-    static _isParametizedValue(entry){
-        return entry[0] && !Array.isArray(entry[0]) && !(entry[1] instanceof ObjektraField) && (ValueType.isPlainObject(entry[1]) || ValueType.extractValueType(entry[1]) === ValueType.Boolean)   // use to describe an array value fields ([simple-value/objektraField, options]). it must be a field that is not a (key, value) pair
+    static _isParametizedValue(entry){    // use to describe an array value fields ([simple-value/objektraField, options]). it must be a field that is not a (key, value) pair
+        return ( 
+            entry[0] && !Array.isArray(entry[0]) && !(entry[1] instanceof ObjektraField) &&
+            (ValueType.isPlainObject(entry[1]) || ValueType.extractValueType(entry[1]) === ValueType.Boolean)
+        )
     }
 
 
@@ -53,10 +56,10 @@ class ObjektraRenderer
     }
 
 
-    static _generateInput({entry, isArrayInput, arrayFieldConfig, inputCallback, Depth = 1})
+    static _generateInput({entry, isArrayInput, arrayFieldConfig, inputCallback, Depth = 1, flexibility })
     {
         const isField = entry instanceof ObjektraField
-        const editableMode = ObjektraInputHelper._resolveFlexibilityMode()
+        const editableMode = ObjektraInputHelper._resolveFlexibilityMode(flexibility)
 
         if (!isField)
         {

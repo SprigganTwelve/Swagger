@@ -24,6 +24,10 @@ class ValueType {
             Object.getPrototypeOf(v) === Object.prototype
         )
     }
+
+    static isNonEmptyObject(v){
+        return ValueType.isPlainObject(v) && Object.keys(v).length > 0
+    }
 }
 
 

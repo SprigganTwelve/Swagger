@@ -5,16 +5,14 @@ import Route from "./models/Route.js";
 import ObjektraField from "./ValueObject/ObjekraField.js";
 import Query from "./ValueObject/Query.js";
 import RouteBadge from "./ValueObject/RouteBadge.js";
+import ThemeStyle from "./ValueObject/ThemeStyle.js";
 import ValueType from "./ValueObject/ValueType.js";
-import './styles/ide-theme.css'
 
 
 
 const layoutBuilder = new LayoutBuilder()
-const container = layoutBuilder.init();
+const container = layoutBuilder.init(ThemeStyle.GALAXY);
 layoutBuilder.renderHeaderInputs()
-
-
 
 
 
@@ -55,7 +53,16 @@ const postResource = new Resource("Post", [
                 [120, false],
                 [                
                     // new ObjektraField({ key: "uuid", type: ValueType.Object, ext: [new ObjektraField({ key: "accountId", type: ValueType.String }),] }),
-                    [ new ObjektraField({ key: "uuid", type: ValueType.String, }), { editable: true } ],
+                    [ new ObjektraField({ key: "uuid", type: ValueType.String, }), { editableValue: true } ],
+                    [ new ObjektraField({ key: "element", type: ValueType.String, }), { editableKey: true } ],
+                    [ new ObjektraField({ key: "freed", type: ValueType.String, }), { editable: true } ],
+
+                    [
+                            [ new ObjektraField({ key: "hasItem", type: ValueType.String, }), { editableValue: true } ],
+                            [ new ObjektraField({ key: "RespondTo", type: ValueType.String, }), { editableKey: true } ],
+                            [ new ObjektraField({ key: "MakeOut", type: ValueType.String, }), { editable: true } ],
+                    ],
+
                     [
                         new ObjektraField({ key: "accountId", type: ValueType.String }),
                         new ObjektraField({ key: "message", type: ValueType.String }),

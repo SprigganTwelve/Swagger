@@ -1,0 +1,394 @@
+/* =========================================================
+RESET & BASE (GALAXY THEME)
+========================================================= */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    transition: all 0.3s ease-in-out;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at 20% 30%, #0a0f1a, #0d1117 70%, #000010);
+    color: #e0e8ff;
+    background-attachment: fixed;
+}
+
+.display-none { display: none; }
+.visibility-hidden { visibility: hidden; }
+
+
+/* =========================================================
+HEADER (GALAXY STYLE)
+========================================================= */
+
+
+header {
+    padding: 20px 28px;
+    background: linear-gradient(90deg, #0d1117, #1a1f2b);
+    border-bottom: 1px solid rgba(120,130,255,0.4);
+    box-shadow: 0 0 15px rgba(120,130,255,0.1) inset;
+}
+
+header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: #a59cff;
+    text-shadow: 0 0 4px #a59cff, 0 0 10px #7d7dff;
+}
+
+header input {
+    width: 320px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(120,130,255,0.5);
+    background: rgba(10,10,30,0.7);
+    color: #e0e8ff;
+    font-size: 13px;
+    box-shadow: inset 0 0 6px rgba(120,130,255,0.2);
+}
+
+header input::placeholder {
+    color: #a0a6c0;
+}
+
+header input:focus {
+    outline: none;
+    border-color: #7d7dff;
+    box-shadow: 0 0 8px #7d7dff;
+}
+
+/* =========================================================
+CONTAINER
+========================================================= */
+
+
+#container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 28px;
+}
+
+/* Resource section */
+.resource {
+    margin-bottom: 48px;
+}
+
+.resource-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #a59cff;
+    text-shadow: 0 0 4px #a59cff;
+}
+
+
+
+/* =========================================================
+ROUTE
+========================================================= */
+
+
+.route {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    background: rgba(20, 25, 40, 0.85);
+    border: 1px solid rgba(120,130,255,0.3);
+    cursor: pointer;
+    margin-bottom: 20px;
+    box-shadow: 0 0 8px rgba(120,130,255,0.1) inset;
+}
+
+.route:hover {
+    background: rgba(30, 35, 60, 0.9);
+    box-shadow: 0 0 12px rgba(180,180,255,0.2) inset;
+}
+
+.method {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    color: #0e1117;
+    text-shadow: 0 0 2px #fff;
+}
+
+.GET { background: #38ff9d; }
+.POST { background: #b877ff; }
+.PUT { background: #ffda45; }
+.PATCH { background: #ff9250; }
+.DELETE { background: #ff6e7f; }
+
+
+.endpoint {
+    font-size: 13px;
+    color: #e0e8ff;
+    text-shadow: 0 0 2px #7d7dff;
+}
+
+/* =========================================================
+LEADING ICONS
+========================================================= */
+
+
+.route-leading {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.svg-box svg {
+    width: 22px;
+    height: 22px;
+    fill: #a0a6c0;
+    transition: fill 0.3s ease;
+}
+
+.svg-box svg:hover {
+    fill: #a59cff;
+}
+
+/* =========================================================
+BADGES
+========================================================= */
+
+
+.route-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: rgba(50,50,90,0.3);
+    color: #c0c8ff;
+    border: 1px solid rgba(120,130,255,0.4);
+    text-shadow: 0 0 2px #7d7dff;
+}
+
+/* =========================================================
+ROUTE CONTENT
+========================================================= */
+
+
+.route-content {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 26px;
+    border-radius: 12px;
+    background: rgba(15,18,30,0.9);
+    border: 1px solid rgba(120,130,255,0.4);
+    box-shadow: 0 0 10px rgba(120,130,255,0.15) inset;
+}
+
+/* =========================================================
+PARAMS & QUERIES
+========================================================= */
+
+
+.params-section,
+.query-section {
+    background: rgba(25,30,45,0.85);
+    border-radius: 10px;
+    padding: 14px;
+    border: 1px solid rgba(120,130,255,0.3);
+}
+
+
+.params-section .title,
+.query-section .title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #a59cff;
+    margin-bottom: 8px;
+    text-shadow: 0 0 2px #7d7dff;
+}
+
+
+.inputs-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+.params-section input,
+.query-section input,
+.key-input-card input {
+    width: 220px;
+    max-width: 260px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(120,130,255,0.3);
+    background: rgba(0,0,20,0.6);
+    color: #a59cff;
+    font-size: 13px;
+    box-shadow: inset 0 0 5px rgba(120,130,255,0.2);
+}
+
+
+
+.params-section input::placeholder,
+.query-section input::placeholder,
+.key-input-card input::placeholder {
+    color: #7d7dff;
+}
+
+
+
+.params-section input:focus,
+.query-section input:focus,
+.key-input-card input:focus {
+    outline: none;
+    border-color: #a59cff;
+    box-shadow: 0 0 6px #7d7dff;
+}
+
+/* =========================================================
+OBJEKTRA / JSON
+========================================================= */
+
+
+.input-schema-container,
+.output-schema-container {
+    background: rgba(15,18,30,0.9);
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid rgba(120,130,255,0.3);
+    box-shadow: 0 0 10px rgba(120,130,255,0.15) inset;
+}
+
+
+.json-object-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-left: 14px;
+}
+
+
+.bracket {
+    color: #79f1ff;
+    font-weight: bold;
+    text-shadow: 0 0 4px #79f1ff;
+}
+
+
+.key-input-card{
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+
+.key-input-card span {
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+
+.key-input-card span:first-child {
+    color: #7d7dff;
+}
+
+
+.key-input-card span:nth-child(2) {
+    color: #ff77aa;
+}
+
+
+.key-input-card > .json-object-container {
+    margin-left: 6px;
+}
+
+
+.key-input-card .json-object-container .key-input-card {
+    margin-left: 16px;
+}
+
+
+
+/* =========================================================
+SELECT
+========================================================= */
+
+
+.header-options {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(120,130,255,0.3);
+    background: rgba(0,0,20,0.6);
+    color: #c0c8ff;
+    font-size: 13px;
+    box-shadow: inset 0 0 4px rgba(120,130,255,0.1);
+}
+
+
+
+/* =========================================================
+EXECUTE BUTTON
+========================================================= */
+
+
+.route-btn-executer {
+    align-self: flex-start;
+    padding: 10px 22px;
+    border-radius: 6px;
+    border: 1px solid rgba(120,130,255,0.4);
+    background: linear-gradient(135deg, #38ff9d, #b877ff);
+    color: #ffffff;
+    font-weight: 700;
+    cursor: pointer;
+    text-shadow: 0 0 2px #ffffff;
+    box-shadow: 0 0 10px rgba(120,130,255,0.25);
+}
+
+
+.route-btn-executer:hover {
+    background: linear-gradient(135deg, #7dffb5, #d49fff);
+    box-shadow: 0 0 12px rgba(180,180,255,0.3);
+}
+
+
+
+/* =========================================================
+GLOBAL ELEMENTS / PSEUDO-ELEMENTS GALAXY EFFECT
+========================================================= */
+
+
+div, span, p, section, header, footer {
+    transition: all 0.3s ease;
+}
+
+*::selection {
+    background: #7d7dff44;
+    color: #ffffff;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: radial-gradient(circle at center, rgba(180,180,255,0.05) 0%, transparent 70%);
+    pointer-events: none;
+    animation: galaxy-slow-rotate 120s linear infinite;
+    z-index: 0;
+}
+
+@keyframes galaxy-slow-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}

@@ -95,7 +95,7 @@ class Route {
 
         // Input object
         if(this.endpoint.inputObjektraEntries){
-            const inputObjektra = new Objektra({entries: this.endpoint.inputObjektraEntries});
+            const inputObjektra = new Objektra({entries: this.endpoint.inputObjektraEntries, flexibility: 1});
             const inputSection = document.createElement('div');
             inputSection.className = 'input-schema-container';
             inputSection.append(this.getHeaderContentTypeHTMLNode(), inputObjektra.getHTMLNode());

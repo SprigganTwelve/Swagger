@@ -3,7 +3,7 @@ import Parameter from "../ValueObject/Parameter.js"
 
 class Endpoint {
     constructor({ 
-        path,
+        path = "/",
         inputObjektraEntries = null,
         outputObjektraEntries = null,
         queries = []                    //An array of query  object

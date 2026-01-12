@@ -70,11 +70,16 @@ class Objektra
         {
             const isParameterizedValue = ObjektraRenderer._isParametizedValue(entry)
             if(isParameterizedValue){
-                console.log('is a parametize value')
+                // console.log('is a parametize value')
+
                 row.appendChild(ObjektraRenderer._generateInput({                       //Represent data using options (object)
-                    entry: entry[0], isArrayInput: false,arrayFieldConfig: entry[1],
-                    inputCallback: (event)=> entry[0] = event.target.value, Depth 
+                    entry: entry[0],
+                    flexibility: this.flexibility,
+                    isArrayInput: false,
+                    arrayFieldConfig: entry[1],
+                    inputCallback: (event)=> entry[0] = event.target.value, Depth,
                 }))
+
                 return row
             }
 
@@ -82,7 +87,7 @@ class Objektra
         }
         else
         {
-            row.appendChild(ObjektraRenderer._generateInput({entry, isArrayInput, Depth}))
+            row.appendChild(ObjektraRenderer._generateInput({entry, isArrayInput, Depth, flexibility: this.flexibility}))
         }
         return row
     }

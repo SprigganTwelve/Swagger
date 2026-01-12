@@ -1,27 +1,41 @@
 import GlobalSetings from "../core/global.js";
+import ThemeStyle from "../ValueObject/ThemeStyle.js";
 
 class LayoutBuilder
 {
-    constructor(){
-        this.documentHTMLBody = document.querySelector('body')
-        this.documentHeadData = document.querySelector("head")
+    constructor()
+    {
+        this.documentBody = document.querySelector('body')
+        this.documentMetaData = document.querySelector("head")
         this.HTMLMainContent  = null
     }
     
-    init(theme){
+    init(theme = ThemeStyle.IDE) //Initialise and stylize stylisie a container  for all your futur api ressource
+    {
+        if (this.documentMetaData && !this.documentMetaData.querySelector('#swagger-api-style')) {
+            const link = document.createElement('link')
+            link.rel = 'stylesheet'
+            link.href = `../styles/${theme}`
+            link.id = 'swagger-api-style'
+            this.documentMetaData.appendChild(link)
+        }
+
+
         if(!this.HTMLMainContent){
             this.HTMLMainContent = document.createElement('div')
             this.HTMLMainContent.setAttribute('id', "container")
-            this.documentHTMLBody.insertBefore(
+            this.documentBody.insertBefore(
                 this.HTMLMainContent,
-                this.documentHTMLBody.firstChild
+                this.documentBody.firstChild
             )
 
             return this.HTMLMainContent
         }
+        return this.HTMLMainContent
     }
 
-    renderHeaderInputs(){
+    renderHeaderInputs()
+    {
         const header = document.createElement('header')
         header.innerHTML = `
                     <h1>API Administrator</h1>
@@ -29,7 +43,7 @@ class LayoutBuilder
                     <input id="authorization-Key" placeholder="Authorization API Key"/>
         `
 
-        this.documentHTMLBody.prepend(header)
+        this.documentBody.prepend(header)
         const inputUrl = document.getElementById("base-url");
         const inputKey = document.getElementById("authorization-Key");
 
