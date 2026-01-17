@@ -9,4 +9,4 @@ import ThemeStyle from "./ValueObject/ThemeStyle.js";
 import ValueType from "./ValueObject/ValueType.js";
 
 
-export { LayoutBuilder, ThemeStyle, Resource, Route, Endpoint, Query, RouteBadge, ObjektraField, ValueType,  }
+export { LayoutBuilder, ThemeStyle, Resource, Route, Endpoint, Query, RouteBadge, ObjektraField, ValueType  }
